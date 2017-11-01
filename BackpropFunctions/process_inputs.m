@@ -22,7 +22,7 @@ end
 if(train_per < 1.0)
     tnp = round(np*train_per);
     ti_tst = ti(tnp+1:end,:);  ti = ti(1:tnp,:);
-    td_tst = td(tnp+1:end);    td = td(1:tnp);
+    td_tst = td(tnp+1:end,1:no);    td = td(1:tnp,1:no);
 else
     ti_tst = ti;
     td_tst = td;

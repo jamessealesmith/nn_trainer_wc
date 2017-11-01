@@ -25,20 +25,20 @@ dataS = 'parity7.dat';
 alg = 2;
 
 % ***** Set algorithm parameters: *****
-% Parameter value vectors match "param_names" for corresponding algorithm. 
-% Keep unused parameter vectors set as "-1"
+% Parameter value vectors match 'param_names' for corresponding algorithm. 
+% Keep unused parameter vectors set as '-1'
 if(alg == 1) % nbn
-    param_names = ["h"];  
+    param_names = ['h'];  
 elseif(alg == 2) % nbn_wc
-    param_names = ["h","wc_setting","beta","omega","rho"];  
+    param_names = ['h','wc_setting','beta','omega','rho'];  
 elseif(alg == 3) % nbn_rr
-    param_names = ["h","wc_setting","beta"];   
+    param_names = ['h','wc_setting','beta'];   
 elseif(alg == 51) % ebp
-    param_names = ["h","c","momentum"];
+    param_names = ['h','c','momentum'];
 elseif(alg == 52) % ebp_wc
-    param_names = ["h","c","wc_setting","beta","omega","rho"];  
+    param_names = ['h','c','wc_setting','beta','omega','rho'];  
 elseif(alg == 0) % sandbox
-   param_names = ["h","c","momentum"];
+   param_names = ['h','c','momentum'];
 end
 valuesA = [2];
 valuesB = [1];

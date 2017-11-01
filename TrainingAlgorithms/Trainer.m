@@ -11,11 +11,6 @@ if (batchF > 1 && batchF < 4)
     figure
 end
 
-%%%%%%%%%%%%%%%%%%
-%data = [0.05 0.1 0.01 0.99];
-%normF = -1;
-%%%%%%%%%%%%%%%%%%
-
 % Process inputs
 [ ti,td,tnp,ti_tst,td_tst,tnp_tst,ni,no,network] = process_inputs(...
     data,network,train_per,normF);
@@ -52,10 +47,6 @@ for tr = 1:ntrials
     else
         ww = randomWeights(nw);
     end
-    
-    %%%%%%%%%%
-    %ww = [0.35 0.15 0.20 0.35 0.25 0.30 0.60 0.40 0.45 0.60 0.5 0.55];
-    %%%%%%%%%%
     
     % Train Weights
     switch alg
@@ -140,7 +131,7 @@ time_results = [ave_iter_suc ave_iter_all ave_tim_suc ave_tim_all];
 
 % Label figure
 if (batchF > 1)
-    ylabel('RMSE_train')
+    ylabel('RMSE train')
     xlabel('Iterations')
     ylim([0 (2)])
 end

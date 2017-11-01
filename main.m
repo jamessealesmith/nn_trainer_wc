@@ -8,8 +8,8 @@ logS = prepare_workspace();
 
 % ***** Select data: *****
 % dataS = 'XOR_uni.dat';
-dataS = 'parity7.dat';
-% dataS = 'spiral.dat';
+% dataS = 'parity7.dat';
+dataS = 'spiral.dat';
 % dataS = 'peaks2000.dat';
 % dataS = 'flowers.dat';
 % dataS = 'flowers_class.dat';
@@ -17,6 +17,7 @@ dataS = 'parity7.dat';
 % dataS = 'ELEC6240.dat';
 % dataS = 'concrete.dat';
 % dataS = 'housing.dat';
+% dataS = 'mnist_small.dat';
 
 % ***** Select algorithm: *****
 % 1 = nbn, 2 = nbn_wc, 3 = nbn_rr
@@ -25,30 +26,31 @@ dataS = 'parity7.dat';
 alg = 1;
 
 % ***** Set algorithm parameters: *****
-% algorithm settings match "param_names" for corresponding algorithm. 
+% algorithm settings match 'param_names' for corresponding algorithm. 
 if(alg == 1) % nbn
     % no additional settings
     param_names = [];
     alg_settings = [];
+    
 elseif(alg == 2) % nbn_wc
-    param_names = ["wc_setting","beta","omega","rho"]; 
-    alg_settings = [1 1E-3 1 1.1];
+    param_names = ['wc_setting','beta','omega','rho']; 
+    alg_settings = [1 1E-4 0.1 1.1];
     
 elseif(alg == 3) % nbn_rr
-    param_names = ["wc_setting","beta"]; 
+    param_names = ['wc_setting','beta']; 
     alg_settings = [1 1E-3];
     
 elseif(alg == 51) % ebp
-    param_names = ["c","momentum"];
+    param_names = ['c','momentum'];
     alg_settings = [0.005 0.5];
     
 elseif(alg == 52) % ebp_wc
-    param_names = ["c","wc_setting","beta","omega","rho"];
+    param_names = ['c','wc_setting','beta','omega','rho'];
     alg_settings = [0.005 1 1E-3 1 1.1];
     
 elseif(alg == 0) % sandbox
-   param_names = ["c","momentum"];
-   alg_settings = [0.005 0.5];
+   param_names = ['c','momentum'];
+   alg_settings = [0.0005 0.5];
 end
     
 % ***** Set Network Parameters: *****
@@ -56,11 +58,11 @@ end
 %  SLP ,hidden network=>  17 1
 %  FCC ,hidden network=>  1 1 1 1 1 1
 %  BMLP,hidden network=>  3 4 2 1
-hidden_network = [ones(1,2)];
+hidden_network = [9];
 
 % 1 = connections accross layers
 % 2 = no connections accross layers (MLP)
-type = 1;  
+type = 2;  
 
 % Activation, 0 = linear, 1 = unipolar, 2 = bipolar
 actH = 2;        % activation of hidden layer neurons
@@ -72,8 +74,8 @@ gainMag = 1.0;
 
 % ***** Set Training Parameters: *****
 desErr = 0.1;                   % Desired Error
-maxIter = 100;                   % Maximum Iterations
-ntrials = 100;                   % Number of training trials
+maxIter = 1000;                   % Maximum Iterations
+ntrials = 1;                   % Number of training trials
 train_per = 1.0;                   % Percent training data, 1 = train all
 randF = -1;                      % > 0 randomly permutates dataset
 normF = 1;                       % > 0 = normalize data
@@ -119,7 +121,7 @@ fprintf('Test Parameters:\nDE = %f\nMax Iter = %d\nTrials = %d\n\n'...
 fprintf('******************** BEGIN  TRAINING ********************\n\n')
 
 % Print Test
-print_training_parameters(["hidden neurons" param_names],[nn_h alg_settings])
+print_training_parameters(['hidden neurons' param_names],[nn_h alg_settings])
 
 % Training
 [train_results, test_results, time_results, record] = Trainer(...

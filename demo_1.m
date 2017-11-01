@@ -7,16 +7,7 @@ logS = prepare_workspace();
 %% User Input
 
 % ***** Select data: *****
-% dataS = 'XOR_uni.dat';
-% dataS = 'parity7.dat';
 dataS = 'spiral.dat';
-% dataS = 'peaks2000.dat';
-% dataS = 'flowers.dat';
-% dataS = 'flowers_class.dat';
-% dataS = 'abalone.dat';
-% dataS = 'ELEC6240.dat';
-% dataS = 'concrete.dat';
-% dataS = 'housing.dat';
 
 % ***** Select algorithm: *****
 % 1 = nbn, 2 = nbn_wc, 3 = nbn_rr
@@ -27,7 +18,7 @@ param_names1 = [];
 alg_settings1 = [];
 
 alg2 = 2;
-param_names2 = ["wc_setting","beta","omega","rho"];
+param_names2 = {'wc_setting','beta','omega','rho'};
 alg_settings2 = [1 1E-4 0.1 1.1];
     
 % ***** Set Network Parameters: *****
@@ -98,7 +89,7 @@ fprintf('Test Parameters:\nDE = %f\nMax Iter = %d\nTrials = %d\n\n'...
 fprintf('******************** NBN ********************\n\n')
 
 % Print Test
-print_training_parameters(["hidden neurons" param_names1],[nn_h alg_settings1])
+print_training_parameters(['hidden neurons' param_names1],[nn_h alg_settings1])
 
 % Training
 [train_results, test_results, time_results, record] = Trainer(...
@@ -120,7 +111,7 @@ if(size(alg_settings1,2) > 0); sweep_results(1,11:11+size(alg_settings1,2) - 1) 
 fprintf('******************** NBN WEIGHT COMPRESSION ********************\n\n')
 
 % Print Test
-print_training_parameters(["hidden neurons" param_names2],[nn_h alg_settings2])
+print_training_parameters(['hidden neurons' param_names2],[nn_h alg_settings2])
 
 % Training
 [train_results, test_results, time_results, record] = Trainer(...

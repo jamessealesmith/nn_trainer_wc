@@ -7,7 +7,7 @@ logS = prepare_workspace();
 %% User Input
 
 % ***** Select data: *****
-dataS = 'ELEC6240.dat';
+dataS = 'parity7_small.dat';
 
 % ***** Select algorithm: *****
 % 1 = nbn, 2 = nbn_wc, 3 = nbn_rr
@@ -19,14 +19,14 @@ alg_settings1 = [];
 
 alg2 = 2;
 param_names2 = ['wc_setting','beta','omega','rho'];
-alg_settings2 = [1 1E-4 1 1.1];
+alg_settings2 = [1 1E-2 0.1 1.1];
     
 % ***** Set Network Parameters: *****
 %  MLP ,hidden network=>  3 4 2 1
 %  SLP ,hidden network=>  17 1
 %  FCC ,hidden network=>  1 1 1 1 1 1
 %  BMLP,hidden network=>  3 4 2 1
-hidden_network = [ones(1,3)];
+hidden_network = [ones(1,9)];
 
 % 1 = connections accross layers
 % 2 = no connections accross layers (MLP)
@@ -41,8 +41,8 @@ no = 1;          % Number outputs
 gainMag = 1.0;
 
 % ***** Set Training Parameters: *****
-desErr = 0.01;                   % Desired Error
-maxIter = 1000;                   % Maximum Iterations
+desErr = 0.1;                   % Desired Error
+maxIter = 100;                   % Maximum Iterations
 ntrials = 100;                   % Number of training trials
 train_per = 1.0;                   % Percent training data, 1 = train all
 randF = -1;                      % > 0 randomly permutates dataset
@@ -80,7 +80,7 @@ diary(logS);
 c = clock;
 fprintf('\n\n\n\n\n\n\n\n\n\n')
 fprintf('%s\n',datestr(datenum(c(1),c(2),c(3),c(4),c(5),c(6))))
-fprintf('DEMO 2 - ELEC 6420\n');
+fprintf('DEMO 3 - HOUSING\n');
 fprintf('Data - %s\n',dataS);
 fprintf('Test Parameters:\nDE = %f\nMax Iter = %d\nTrials = %d\n\n'...
     ,desErr,maxIter,ntrials);
@@ -106,7 +106,7 @@ sweep_results(1,1:2) = train_results(1:2);
 sweep_results(1,3:4) = test_results(1:2);
 sweep_results(1,5:6) = time_results([1 3]);
 sweep_results(1,7:10) = [nn_h type cell2mat(record(1)) cell2mat(record(2))];
-if(size(alg_settings1,2) > 0); sweep_results(1,11:11+size(alg_settings1,2) -1) = alg_settings1; end;
+if(size(alg_settings1,2) > 0); sweep_results(1,11:11+size(alg_settings1,2) - 1) = alg_settings; end;
 
 fprintf('******************** NBN WEIGHT COMPRESSION ********************\n\n')
 
