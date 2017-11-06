@@ -1,5 +1,6 @@
 10/20/2017
 James S. Smith, Auburn University
+Bo Wu, Auburn University
 Bogdan M. Wilamowski, PhD, Auburn University
 
 *main.m - train neural network with single run
