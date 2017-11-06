@@ -26,7 +26,7 @@ alg_settings2 = [1 1E-2 0.1 1.1];
 %  SLP ,hidden network=>  17 1
 %  FCC ,hidden network=>  1 1 1 1 1 1
 %  BMLP,hidden network=>  3 4 2 1
-hidden_network = [ones(1,9)];
+hidden_network = [ones(1,2)];
 
 % 1 = connections accross layers
 % 2 = no connections accross layers (MLP)

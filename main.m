@@ -62,7 +62,7 @@ hidden_network = [9];
 
 % 1 = connections accross layers
 % 2 = no connections accross layers (MLP)
-type = 2;  
+type = 1;  
 
 % Activation, 0 = linear, 1 = unipolar, 2 = bipolar
 actH = 2;        % activation of hidden layer neurons
@@ -75,7 +75,7 @@ gainMag = 1.0;
 % ***** Set Training Parameters: *****
 desErr = 0.1;                   % Desired Error
 maxIter = 1000;                   % Maximum Iterations
-ntrials = 1;                   % Number of training trials
+ntrials = 10;                   % Number of training trials
 train_per = 1.0;                   % Percent training data, 1 = train all
 randF = -1;                      % > 0 randomly permutates dataset
 normF = 1;                       % > 0 = normalize data
